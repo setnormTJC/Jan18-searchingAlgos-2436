@@ -56,30 +56,45 @@ vector<int> generateNRandomInts(int N)
     return randomNums; 
 }
 
+
+void timeSequentialSearchForN(int N)
+{
+    auto vecN = generateNRandomInts(N);
+    int randValue = rand() % (N + 1);
+    Timer* tN = new Timer;
+    sequential_search(vecN, randValue);//ignoring returned index value
+    delete tN;
+}
+
 int main()
 {
     srand(time(0)); 
 
 
-    //string word = "hannah";
+    timeSequentialSearchForN(10); 
+    timeSequentialSearchForN(100);
+    timeSequentialSearchForN(500);
+    timeSequentialSearchForN(1000);
+    timeSequentialSearchForN(3000);
+    timeSequentialSearchForN(5000);
+    timeSequentialSearchForN(10'000);
 
-    //std::reverse(word.begin(), word.end())
-    // 
-    vector<int> numsList = generateNRandomInts(1'000'000'000); //vector is a DYNAMIC array 
+   // const int N = 10'000; 
+   // vector<int> numsList = generateNRandomInts(N); //vector is a DYNAMIC array 
 
-   // numsList.push_back(8536);
-    
-    cout << "Contents of list: " << endl; 
-    //print(numsList);
+   //// numsList.push_back(8536);
+   // 
+   // cout << "Contents of list: " << endl; 
+   // //print(numsList);
 
-    cout << "Enter some number - we'lll check if in the list: " << endl; 
-    int targetNumber; 
-    cin >> targetNumber; 
+   // cout << "Enter some number - we'lll check if in the list: " << endl; 
+   // int targetNumber = rand() % N; 
+   // 
 
-    Timer* timeToSearch = new Timer; 
-    cout << "The number " << targetNumber << "is? in the list at index number: "
-        << sequential_search(numsList, targetNumber) << endl;
-    delete timeToSearch; 
+   // Timer* timeToSearch = new Timer; 
+   // cout << "The number " << targetNumber << "is? in the list at index number: "
+   //     << sequential_search(numsList, targetNumber) << endl;
+   // delete timeToSearch; 
 
 
     //std::find
