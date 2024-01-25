@@ -16,6 +16,7 @@ int binarySearch(std::vector<int> sortedNums, int searchValue)
     int middle;
     
 
+    int comparisonCount = 0;
     while (first <= last and !found)
     {
         middle = (first + last) / 2; //use ceil() or floor() for odd lengths … be cautious
@@ -25,15 +26,18 @@ int binarySearch(std::vector<int> sortedNums, int searchValue)
         }
         else if (sortedNums[middle] > searchValue)
         {
+            comparisonCount++; 
             last = middle - 1;//shift last one to the "left" of middle
         }
         else
         {
+            comparisonCount++;
             first = middle + 1;
         }
 
     }//end while 
 
+    cout << "Total comparisons for binary sea." << comparisonCount << endl; 
 
     if (found)
     {
@@ -66,7 +70,7 @@ int main()
 
     vector<int> MANYevenNums; 
 
-    for (int i = 0; i < 1'000'000; i = i + 2)
+    for (int i = 0; i < 10'000'000; i = i + 2)
     {
         MANYevenNums.push_back(i);  //0 2 4 6 ...100'000
     }
@@ -75,7 +79,7 @@ int main()
     for (int i = 0; i < 5; i++)
     {
 
-        int randomIndex = rand() % MANYevenNums.size(); 
+        int randomIndex = (rand() % MANYevenNums.size()) * 100; 
 
         int targetValue = MANYevenNums.at(randomIndex);
 
